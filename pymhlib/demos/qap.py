@@ -7,6 +7,7 @@ The task is to assign all facilities to different locations with the goal of min
 the sum of the distances multiplied by the corresponding flows.
 """
 
+import os
 import numpy as np
 import random
 from typing import Any, Tuple
@@ -137,4 +138,7 @@ if __name__ == '__main__':
     from pymhlib.demos.common import run_optimization, data_dir
     from pymhlib.settings import get_settings_parser
     parser = get_settings_parser()
-    run_optimization('QAP', QAPInstance, QAPSolution, data_dir+'bur26a.dat')
+    TAKE = ['xu64.dat','xu144.dat','xu8100.dat']
+    for filename in os.listdir(data_dir):
+        if filename in TAKE:
+            run_optimization('QAP', QAPInstance, QAPSolution, data_dir+filename)
