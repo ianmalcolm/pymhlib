@@ -37,8 +37,8 @@ class QAPInstance:
         self.n = 0
         with open(file_name, "r") as file:
             self.n = int(file.readline())
-            if not 2 <= self.n <= 1000:
-                raise ValueError(f"Invalid n read from file {file_name}: {self.n}")
+            #if not 2 <= self.n <= 1000:
+            #    raise ValueError(f"Invalid n read from file {file_name}: {self.n}")
             self.a = np.empty([self.n, self.n], dtype=int)
             self.b = np.empty([self.n, self.n], dtype=int)
             file.readline()  # skip empty line
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     from pymhlib.demos.common import run_optimization, data_dir
     from pymhlib.settings import get_settings_parser
     parser = get_settings_parser()
-    TAKE = ['xu64.dat','xu144.dat','xu8100.dat']
+    TAKE = "xu3600.dat"
     for filename in os.listdir(data_dir):
-        if filename in TAKE:
+        if filename == TAKE:
             run_optimization('QAP', QAPInstance, QAPSolution, data_dir+filename)
